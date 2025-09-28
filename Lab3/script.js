@@ -1,4 +1,4 @@
-const q4Options = ["3", "4", "5", "22"];
+const q4Options = ["20", "1", "0", "10000"];
 const shuffledOptions = q4Options.sort(() => Math.random() - 0.5);
 
 const q4Select = document.getElementById('q4select');
@@ -26,7 +26,7 @@ function submitQuiz() {
   }
 
   const q2Answers = Array.from(document.querySelectorAll('input[name="q2"]:checked')).map(cb => cb.value);
-  if (q2Answers.includes("React") && q2Answers.includes("Vue") && !q2Answers.includes("Laravel")) {
+  if (q2Answers.includes("CSS") && q2Answers.includes("Javascript") && !q2Answers.includes("Code")) {
     score += 20;
     showFeedback(2, true);
   } else {
@@ -34,7 +34,7 @@ function submitQuiz() {
   }
 
   const q3Answer = document.getElementById('q3input').value.trim().toLowerCase();
-  if (q3Answer === "hypertext markup language") {
+  if (q3Answer === "C") {
     score += 20;
     showFeedback(3, true);
   } else {
@@ -42,7 +42,7 @@ function submitQuiz() {
   }
 
   const q4Select = document.getElementById('q4select');
-  if (q4Select.value === "4") {
+  if (q4Select.value === "0") {
     score += 20;
     showFeedback(4, true);
   } else {
@@ -88,9 +88,7 @@ function showFeedback(qNum, correct) {
   feedback.innerHTML = '';
 
   const img = document.createElement('img');
-  img.src = correct
-    ? 'https://img.icons8.com/emoji/48/000000/check-mark-emoji.png'
-    : 'https://img.icons8.com/emoji/48/000000/cross-mark-emoji.png';
+  img.src = correct ? 'https://img.icons8.com/emoji/48/000000/check-mark-emoji.png' : 'https://img.icons8.com/emoji/48/000000/cross-mark-emoji.png';
   img.alt = correct ? 'Correct' : 'Incorrect';
 
   feedback.appendChild(img);
@@ -104,9 +102,7 @@ function showFeedback(qNum, correct) {
   feedback.innerHTML = '';
 
   const img = document.createElement('img');
-  img.src = correct
-    ? 'https://img.icons8.com/emoji/48/000000/check-mark-emoji.png'
-    : 'https://img.icons8.com/emoji/48/000000/cross-mark-emoji.png';
+  img.src = correct ? 'https://img.icons8.com/emoji/48/000000/check-mark-emoji.png' : 'https://img.icons8.com/emoji/48/000000/cross-mark-emoji.png';
   img.alt = correct ? 'Correct' : 'Incorrect';
 
   feedback.appendChild(img);
