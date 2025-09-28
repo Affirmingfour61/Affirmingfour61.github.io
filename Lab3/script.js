@@ -1,4 +1,4 @@
-const q4Options = ["20", "1", "0", "10000"];
+const q4Options = ["20", "1", "5", "10000"];
 const shuffledOptions = q4Options.sort(() => Math.random() - 0.5);
 
 const q4Select = document.getElementById('q4select');
