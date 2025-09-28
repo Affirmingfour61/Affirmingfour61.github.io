@@ -42,7 +42,7 @@ function submitQuiz() {
   }
 
   const q4Select = document.getElementById('q4select');
-  if (q4Select.value === "0") {
+  if (q4Select.value === "5") {
     score += 20;
     showFeedback(4, true);
   } else {
