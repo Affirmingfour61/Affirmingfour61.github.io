@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Quiz</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+<h1>Welcome To the JavaScript Quiz!</h1>
+<div class="quiz-container">
+  <form id="quizForm">
+
+    <div class="question" id="q1">
+      <p>1. Which language runs in a web browser? <span class="feedback-inline" id="feedback1"></span></p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="JavaScript"> JavaScript</label>
+        <label><input type="radio" name="q1" value="Python"> Python</label>
+        <label><input type="radio" name="q1" value="C++"> C++</label>
+      </div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. Which of the following are JavaScript frameworks? (Select all that apply) <span class="feedback-inline" id="feedback2"></span></p>
+      <div class="options">
+        <label><input type="checkbox" name="q2" value="React"> React</label>
+        <label><input type="checkbox" name="q2" value="Vue"> Vue</label>
+        <label><input type="checkbox" name="q2" value="Laravel"> Laravel</label>
+      </div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. What does HTML stand for? <span class="feedback-inline" id="feedback3"></span></p>
+      <input type="text" id="q3input">
+    </div>
+
+    <div class="question" id="q4">
+      <p>4. Select the correct result of 2 + 2: <span class="feedback-inline" id="feedback4"></span></p>
+      <select id="q4select"></select>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5. Which symbol is used for comments in JavaScript? <span class="feedback-inline" id="feedback5"></span></p>
+      <div class="options">
+        <label><input type="radio" name="q5" value="//"> //</label>
+        <label><input type="radio" name="q5" value="##"> ##</label>
+        <label><input type="radio" name="q5" value="/*"> /*</label>
+      </div>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+  </form>
+
+  <div class="score" id="totalScore"></div>
+  <div class="score">Total Times Taken: <span id="timesTaken"></span></div>
+  <div class="congrats" id="congratsMessage"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
