@@ -10,7 +10,13 @@ const multipliers = {
   "Heart": 10
 };
 
-
+const slotContainer = document.getElementById("slotContainer");
+for (let i = 1; i <= 3; i++) {
+  const img = document.createElement("img");
+  img.id = `slot${i}`;
+  img.alt = "";
+  slotContainer.appendChild(img);
+}
 document.getElementById("spinBtn").addEventListener("click", spinSlots);
 
 document.getElementById("resetBtn").addEventListener("click", resetSlots);
