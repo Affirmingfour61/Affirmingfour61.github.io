@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: darkturquoise;
+  font-size: 124px;
+}
+
+#slotContainer {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#slotContainerWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: red; 
+  border-radius: 15px;
+  margin: 20px auto;
+  width: fit-content; 
+}
+
+#slotContainer img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  background-color: white;
+
+}
+
+
+button {
+  padding: 10px 20px;
+  font-size: 40px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+#resultMessage {
+  font-size: 70px;
+  margin-top: 20px;
+}
+
+#winnings {
+  font-weight: bold;
+  font-size: 80px;
+  color: black;
+}
