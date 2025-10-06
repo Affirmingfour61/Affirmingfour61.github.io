@@ -1,129 +1,46 @@
-//Event Listeners
-document.querySelector("#zip").addEventListener("change", displayCity);
-document.querySelector("#zip").addEventListener("change", displayPasswords);
-document.querySelector("#zip").addEventListener("change", displayUsername);
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4:Sig Up Page</title>
+</head>
 
+<body>
 
-// document.querySelector("#state").addEventListener("change", displayStates);
+    <h1> Sign Up Form </h1>
 
-displayStates();
+    <fieldset>
+        <legend>Sign Up</legend>
+        First Name: <input type="text"><br>
+        Last Name: <input type="text"><br>
+        Email: <input type="text"><br>
+        Phone Number:<input type="text"><br><br>
+        Zip Code: <input id="zip" type="text"><br>
+        City: <span id="city"></span>
+        <br>
+        Latitude:<span id="latitude"></span>
+        <br>
+        Longitude:<span id="longitude"></span>
+        <br><br>
+        State: 
+        <select id="state">
+        </select><br>
 
-displayCounty();
+        Select a County: <select id="county">
 
-async function displayCity() {
-    let zipCode = document.querySelector("#zip").value;
-    let url = "https://csumb.space/api/cityInfoAPI.php?zip=" + zipCode;
-    try {
-        let response = await fetch(url);
-        try {
-            let data = await response.json();
-            //console.log(data);
-            document.querySelector("#city").textContent = data.city;
-           document.querySelector("#latitude").textContent = data.latitude;
-            document.querySelector("#longitude").textContent = data.longitude;
+        </select><br>
 
+        Desired Username: <input type="text" id="usernameInput"> <span id="usernameMsg"></span><br>
+        Password: <input type="password" id="passwordInput">   <span id="password"></span>
+        <br>
+        Type Password Again: <input type="password"><br>
+        <input type="submit" value="Sign up!">
+    </fieldset>
 
+    <script src="js/script.js"></script>
 
+</body>
 
-        } catch (parseError) {
-            console.log("JSON Parsing error " + parseError);
-        }
-    } catch (error) {
-        console.log("Network error " + error);
-    }
-}
-async function displayUsername() {
-    let username = document.querySelector("#usernameInput").value;
-    let url = "https://csumb.space/api/usernamesAPI.php?username=?" + username;
-    try {
-        let response = await fetch(url);
-        let data = await response.json();
-
-        if (data.available == 'false') {
-            document.querySelector("#usernameMsg").textContent = "Not Available";
-            document.querySelector("#usernameMsg").style.color = "red";
-        } else {
-            document.querySelector("#usernameMsg").textContent = "Available";
-            document.querySelector("#usernameMsg").style.color = "green";
-        }
-    } catch (error) {
-        console.log("Error: " + error);
-    }
-}
-
-
-async function displayStates() {
-    let url = "https://csumb.space/api/allStatesAPI.php";
-    try {
-        let response = await fetch(url);
-        try {
-            let data = await response.json();
-            console.log(data);
-
-            for (let i of data) {
-                let optionElement = document.createElement("option");
-                optionElement.textContent = i.state;
-                optionElement.value = i.usps;
-
-                document.querySelector("#state").append(optionElement);
-            }
-
-        } catch (parseError) {
-            console.log("JSON Parsing error " + parseError);
-        }
-    } catch (error) {
-        console.log("Network error " + error);
-    }
-    //alert(zipCode)
-}
-
-
-// async function displayCounty() {
-//     let url = "https://csumb.space/api/countyListAPI.php";
-//     try {
-//         let response = await fetch(url);
-//         try {
-//             let data = await response.json();
-//             console.log(data);
-
-//              for (let i of data) {
-//                  let optionElement = document.createElement("option");
-//                 optionElement.textContent = i.county;
-//                 optionElement.value = i.state;
-
-//                 document.querySelector("#county").append(optionElement);
-//             }
-
-//         } catch (parseError) {
-//             console.log("JSON Parsing error " + parseError);
-//         }
-//     } catch (error) {
-//         console.log("Network error " + error);
-//     }
-//     //alert(zipCode)
-// }
-
-async function displayPasswords() {
-    let url = "https://csumb.space/api/suggestedPassword.php?length=8";
-    try {
-        let response = await fetch(url);
-        try {
-            let data = await response.json();
-            console.log(data);
-
-            
-            document.querySelector("#password").textContent = data.password;
-            //id for the textbox then have a onlick listener for it
-
-        } catch (parseError) {
-            console.log("JSON Parsing error " + parseError);
-        }
-    } catch (error) {
-        console.log("Network error " + error);
-    }
-    //alert(zipCode)
-}
-
-
-
+</html>
