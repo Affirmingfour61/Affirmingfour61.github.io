@@ -1,0 +1,129 @@
+//Event Listeners
+document.querySelector("#zip").addEventListener("change", displayCity);
+document.querySelector("#zip").addEventListener("change", displayPasswords);
+document.querySelector("#zip").addEventListener("change", displayUsername);
+
+
+
+// document.querySelector("#state").addEventListener("change", displayStates);
+
+displayStates();
+
+displayCounty();
+
+async function displayCity() {
+    let zipCode = document.querySelector("#zip").value;
+    let url = "https://csumb.space/api/cityInfoAPI.php?zip=" + zipCode;
+    try {
+        let response = await fetch(url);
+        try {
+            let data = await response.json();
+            //console.log(data);
+            document.querySelector("#city").textContent = data.city;
+           document.querySelector("#latitude").textContent = data.latitude;
+            document.querySelector("#longitude").textContent = data.longitude;
+
+
+
+
+        } catch (parseError) {
+            console.log("JSON Parsing error " + parseError);
+        }
+    } catch (error) {
+        console.log("Network error " + error);
+    }
+}
+async function displayUsername() {
+    let username = document.querySelector("#usernameInput").value;
+    let url = "https://csumb.space/api/usernamesAPI.php?username=?" + username;
+    try {
+        let response = await fetch(url);
+        let data = await response.json();
+
+        if (data.available == 'false') {
+            document.querySelector("#usernameMsg").textContent = "Not Available";
+            document.querySelector("#usernameMsg").style.color = "red";
+        } else {
+            document.querySelector("#usernameMsg").textContent = "Available";
+            document.querySelector("#usernameMsg").style.color = "green";
+        }
+    } catch (error) {
+        console.log("Error: " + error);
+    }
+}
+
+
+async function displayStates() {
+    let url = "https://csumb.space/api/allStatesAPI.php";
+    try {
+        let response = await fetch(url);
+        try {
+            let data = await response.json();
+            console.log(data);
+
+            for (let i of data) {
+                let optionElement = document.createElement("option");
+                optionElement.textContent = i.state;
+                optionElement.value = i.usps;
+
+                document.querySelector("#state").append(optionElement);
+            }
+
+        } catch (parseError) {
+            console.log("JSON Parsing error " + parseError);
+        }
+    } catch (error) {
+        console.log("Network error " + error);
+    }
+    //alert(zipCode)
+}
+
+
+// async function displayCounty() {
+//     let url = "https://csumb.space/api/countyListAPI.php";
+//     try {
+//         let response = await fetch(url);
+//         try {
+//             let data = await response.json();
+//             console.log(data);
+
+//              for (let i of data) {
+//                  let optionElement = document.createElement("option");
+//                 optionElement.textContent = i.county;
+//                 optionElement.value = i.state;
+
+//                 document.querySelector("#county").append(optionElement);
+//             }
+
+//         } catch (parseError) {
+//             console.log("JSON Parsing error " + parseError);
+//         }
+//     } catch (error) {
+//         console.log("Network error " + error);
+//     }
+//     //alert(zipCode)
+// }
+
+async function displayPasswords() {
+    let url = "https://csumb.space/api/suggestedPassword.php?length=8";
+    try {
+        let response = await fetch(url);
+        try {
+            let data = await response.json();
+            console.log(data);
+
+            
+            document.querySelector("#password").textContent = data.password;
+            //id for the textbox then have a onlick listener for it
+
+        } catch (parseError) {
+            console.log("JSON Parsing error " + parseError);
+        }
+    } catch (error) {
+        console.log("Network error " + error);
+    }
+    //alert(zipCode)
+}
+
+
+
